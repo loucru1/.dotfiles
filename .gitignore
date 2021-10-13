@@ -3,3 +3,4 @@ config/.config/configstore/*
 config/.config/yarn/*
 config/.config/karabiner/automatic_backups/*
 config/.config/karabiner/assets/*
+*.DS_Store
