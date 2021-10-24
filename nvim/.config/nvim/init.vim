@@ -43,6 +43,20 @@ Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
 Plug 'liuchengxu/vim-clap'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Automatically install and update global extensions for coc
+let g:coc_global_extensions = [
+  \ 'coc-tsserver'
+  \ ]
+
+" Typescript
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
+Plug 'jparise/vim-graphql'
+Plug 'jxnblk/vim-mdx-js'
+
 
 " Requires
 Plug 'guns/vim-sexp',    {'for': 'clojure'}
@@ -73,7 +87,19 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w
+" Move window
+nmap <Space> <C-w>w
+map s<left> <C-w>h
+map s<up> <C-w>k
+map s<down> <C-w>j
+map s<right> <C-w>l
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
 
 fun! TrimWhiteSpace()
     let l:save = winsaveview()
