@@ -30,6 +30,8 @@ call plug#begin('~/.vim/plugged')
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': 'TSUpdate'}
+Plug 'nvim-treesitter/playground'
+Plug 'lewis6991/spellsitter.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'nvim-telescope/telescope-fzy-native.nvim'
 Plug 'gruvbox-community/gruvbox'
@@ -38,6 +40,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
 Plug 'preservim/nerdtree'
+Plug 'folke/todo-comments.nvim'
+
 " One of following
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'junegunn/fzf'
@@ -67,29 +71,40 @@ Plug 'tpope/vim-sexp-mappings-for-regular-people'
 
 call plug#end()
 
+lua require("todo-comments").setup {}
+
+lua require('spellsitter').setup()
+
 colorscheme gruvbox
+
+
+" Enable vim-iced's default key mapping
+" This is recommended for newbies
+let g:iced_enable_default_key_mappings = v:true
+
+
+" Key remaps
 
 " set <leader> to space
 noremap <Space> <Nop>
 let mapleader = "\<BS>"
 let maplocalleader = " "
 
-" Enable vim-iced's default key mapping
-" This is recommended for newbies
-let g:iced_enable_default_key_mappings = v:true
-
-" Key remaps
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
 
 " Find files using Telescope command-line sugar.
+
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>ftq <cmd>TodoQuickFix<cr>
+nnoremap <leader>ftt <cmd>TodoTelescope<cr>
 
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w
+
 " Move window
 nmap <Space> <C-w>w
 map s<left> <C-w>h
@@ -112,4 +127,3 @@ augroup ON_SAVE
     autocmd!
     autocmd BufWritePre * :call TrimWhiteSpace()
 augroup END
-
