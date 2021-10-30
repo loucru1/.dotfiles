@@ -90,16 +90,22 @@ noremap <Space> <Nop>
 let mapleader = "\<BS>"
 let maplocalleader = " "
 
-nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input("Grep For > ")})<CR>
+" Delete without yank
+nnoremap <leader>d "_d
+nnoremap x "_x
 
-" Find files using Telescope command-line sugar.
+" Increment/decrement
+nnoremap + <C-a>
+nnoremap - <C-x>
 
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>ftq <cmd>TodoQuickFix<cr>
-nnoremap <leader>ftt <cmd>TodoTelescope<cr>
+
+" Delete a word backwards
+nnoremap dw vb"_d
+
+" Select all
+nmap <C-a> gg<S-v>G
+
+
 
 " Split window
 nmap ss :split<Return><C-w>w
